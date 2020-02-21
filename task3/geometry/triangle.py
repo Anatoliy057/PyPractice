@@ -1,4 +1,4 @@
-from task3.line import SectionLine
+from task3.geometry.line import SectionLine
 
 
 class Triangle(object):

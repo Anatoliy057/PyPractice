@@ -1,6 +1,6 @@
-from task3.triangle import Triangle
-from task3.point import Point
-from task3.line import RayLine
+from task3.geometry.triangle import Triangle
+from task3.geometry.point import Point
+from task3.geometry.line import RayLine
 
 triangle = Triangle(Point(1, 2), Point(3, -2), Point(-2, -1))
 o = Point(0, 0)

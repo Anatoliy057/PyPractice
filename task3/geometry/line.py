@@ -1,5 +1,5 @@
-from task3.point import Point
-from task3.vector2 import Vector2
+from task3.geometry.point import Point
+from task3.geometry.vector2 import Vector2
 
 
 class Line(object):
@@ -42,8 +42,8 @@ class Line(object):
 
     def distance(self, p: Point) -> float:
         p1, p2 = self.get_points()
-        dy = p2.delta_y(p1)
-        dx = p2.delta_x(p1)
+        dy = p2.dy(p1)
+        dx = p2.dx(p1)
         return dy * (p.get_x() - p1.get_x()) - dx * (p.get_y() - p1.get_y())
 
     def intersection(self, l):
@@ -59,10 +59,10 @@ class Line(object):
     def get_ac(self, arg: int):
         p1, p2 = self.get_points()
         if arg == 0:
-            a = p2.delta_x(p1) / p2.delta_y(p1)
+            a = p2.dx(p1) / p2.dy(p1)
             c = -a * p1.get_y() + p1.get_x()
         else:
-            a = p2.delta_y(p1) / p2.delta_x(p1)
+            a = p2.dy(p1) / p2.dx(p1)
             c = -a * p1.get_x() + p1.get_y()
         return a, c
 
