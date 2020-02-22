@@ -1,0 +1,202 @@
+[
+    {
+        "mark": 4.9,
+        "course": 4,
+        "desk": {
+            "gender": "m",
+            "name": "Шайда",
+            "surname": "Карпов",
+            "patronymic": "Романович"
+        }
+    },
+    {
+        "mark": 3.5,
+        "course": 4,
+        "desk": {
+            "gender": "m",
+            "name": "Варган",
+            "surname": "Куликовский",
+            "patronymic": "Святославович"
+        }
+    },
+    {
+        "mark": 4.7,
+        "course": 3,
+        "desk": {
+            "gender": "m",
+            "name": "Викс",
+            "surname": "Карпов",
+            "patronymic": "Анатольевич"
+        }
+    },
+    {
+        "mark": 3.6,
+        "course": 2,
+        "desk": {
+            "gender": "w",
+            "name": "Кальмина",
+            "surname": "Городнова",
+            "patronymic": "Павловна"
+        }
+    },
+    {
+        "mark": 2.8,
+        "course": 2,
+        "desk": {
+            "gender": "m",
+            "name": "Орадин",
+            "surname": "Симонов",
+            "patronymic": "Леонидович"
+        }
+    },
+    {
+        "mark": 4.0,
+        "course": 4,
+        "desk": {
+            "gender": "m",
+            "name": "Океан",
+            "surname": "Павленко",
+            "patronymic": "Васильевич"
+        }
+    },
+    {
+        "mark": 4.0,
+        "course": 3,
+        "desk": {
+            "gender": "m",
+            "name": "Мариав",
+            "surname": "Алиев",
+            "patronymic": "Леонидович"
+        }
+    },
+    {
+        "mark": 3.4,
+        "course": 3,
+        "desk": {
+            "gender": "m",
+            "name": "Маковий",
+            "surname": "Москаленко",
+            "patronymic": "Федорович"
+        }
+    },
+    {
+        "mark": 2.2,
+        "course": 4,
+        "desk": {
+            "gender": "m",
+            "name": "Сиди",
+            "surname": "Ульянов",
+            "patronymic": "Эдуардович"
+        }
+    },
+    {
+        "mark": 3.9,
+        "course": 4,
+        "desk": {
+            "gender": "w",
+            "name": "Гульжия",
+            "surname": "Бабенко",
+            "patronymic": "Дмитриевна"
+        }
+    },
+    {
+        "mark": 2.7,
+        "course": 1,
+        "desk": {
+            "gender": "w",
+            "name": "Азизула",
+            "surname": "Смирнова",
+            "patronymic": "Григорьевна"
+        }
+    },
+    {
+        "mark": 2.3,
+        "course": 3,
+        "desk": {
+            "gender": "m",
+            "name": "Ашак",
+            "surname": "Мартынов",
+            "patronymic": "Миронович"
+        }
+    },
+    {
+        "mark": 5.0,
+        "course": 4,
+        "desk": {
+            "gender": "m",
+            "name": "Рамаер",
+            "surname": "Королев",
+            "patronymic": "Иванович"
+        }
+    },
+    {
+        "mark": 3.6,
+        "course": 5,
+        "desk": {
+            "gender": "w",
+            "name": "Мойя",
+            "surname": "Лютова",
+            "patronymic": "Романовна"
+        }
+    },
+    {
+        "mark": 2.6,
+        "course": 4,
+        "desk": {
+            "gender": "w",
+            "name": "Алифа",
+            "surname": "Рзаева",
+            "patronymic": "Яковлевна"
+        }
+    },
+    {
+        "mark": 3.5,
+        "course": 2,
+        "desk": {
+            "gender": "m",
+            "name": "Дитрих",
+            "surname": "Мечников",
+            "patronymic": "Данилович"
+        }
+    },
+    {
+        "mark": 2.3,
+        "course": 1,
+        "desk": {
+            "gender": "w",
+            "name": "Окулина",
+            "surname": "Дарова",
+            "patronymic": "Сергеевна"
+        }
+    },
+    {
+        "mark": 3.5,
+        "course": 4,
+        "desk": {
+            "gender": "m",
+            "name": "Тенха",
+            "surname": "Чистяков",
+            "patronymic": "Юрьевич"
+        }
+    },
+    {
+        "mark": 2.4,
+        "course": 1,
+        "desk": {
+            "gender": "w",
+            "name": "Аэонила",
+            "surname": "Омарова",
+            "patronymic": "Анатольевна"
+        }
+    },
+    {
+        "mark": 4.0,
+        "course": 2,
+        "desk": {
+            "gender": "m",
+            "name": "Реналь",
+            "surname": "Панченко",
+            "patronymic": "Павлович"
+        }
+    }
+]
