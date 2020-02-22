@@ -5,101 +5,121 @@ from task3.geometry.vector2 import Vector2
 class Line(object):
 
     def __init__(self, p1: Point, p2: Point):
-        self.p1 = p1
-        self.p2 = p2
-        self.v = Vector2(p1, p2)
+        self.__p1 = p1
+        self.__p2 = p2
+        self.__v = Vector2.to_vector(p1, p2)
+
+        dp = p2 - p1
+        if not dp.get_x():
+            self.__fy = lambda y: dp.get_x() / dp.get_y() * (y - p1.get_y()) + p1.get_x()
+        elif not dp.get_y():
+            self.__fx = lambda x: dp.get_y() / dp.get_x() * (x - p1.get_x()) + p1.get_y()
+        else:
+            self.__fx = lambda x: dp.get_y() / dp.get_x() * (x - p1.get_x()) + p1.get_y()
+            self.__fy = lambda y: dp.get_x() / dp.get_y() * (y - p1.get_y()) + p1.get_x()
+
+    def __repr__(self):
+        return '{0} : {1}, v = {2}'.format(self.__p1, self.__p2, self.__v)
 
     def __str__(self):
-        return '{0}: {1}; {2}'.format(type(self), self.p1, self.p2)
+        return 'Line: [{0}, {1}], v = {2}'.format(self.__p1, self.__p2, self.__v)
+
+    def __check__(self, p):
+        return p is not None
 
     def __inter__(self, l):
-        if self.get_vector().dot(l.get_vector()) == 0:
+        if self.get_v() * l.get_v() == 0:
             return None
 
-        arg = l.main_arg()
+        if self.is_axis():
+            if self.is_defined_x():
+                y = self.__fx(0)
+                return Point(l.get_fy(y), y)
+            else:
+                x = self.__fy(0)
+                return Point(x, l.get_fx(x))
+        else:
+            p1 = self.get_p1()
+            p2 = l.get_p1()
+            v1, v2 = self.get_v(), l.get_v()
+            a1 = v1.get_y() / v1.get_x()
+            a2 = v2.get_y() / v2.get_x()
+            x = (a1 * p1.get_x() - a2 * p2.get_x() - p1.get_y() + p2.get_y()) / (a1 - a2)
+            y = self.__fx(x)
+            return Point(x, y)
 
-        a, c = self.get_ac(arg)
-        b, d = l.get_ac(arg)
+    def get_fx(self):
+        return self.__fx
 
-        x = (d - c) / (a - b)
-        y = a * x + c
-        return Point(x, y)
+    def get_fy(self):
+        return self.__fy
 
-    def get_point1(self):
-        return self.p1
+    def is_axis(self):
+        return self.__fx is None or self.__fy is None
 
-    def get_point2(self):
-        return self.p2
+    def is_defined_x(self) -> bool:
+        return self.__fx is not None
 
-    def get_points(self):
-        return self.p1, self.p2
+    def is_defined_y(self) -> bool:
+        return self.__fy is not None
 
-    def get_vector(self) -> Vector2:
-        return self.v
+    def get_p1(self):
+        return self.__p1
+
+    def get_p2(self):
+        return self.__p2
+
+    def get_ps(self):
+        return self.__p1, self.__p2
+
+    def get_v(self) -> Vector2:
+        return self.__v
 
     def on_line(self, p: Point) -> bool:
-        return self.distance(p) == 0
+        return self.__check__(p) and self.distance(p) == 0
 
     def distance(self, p: Point) -> float:
-        p1, p2 = self.get_points()
-        dy = p2.dy(p1)
-        dx = p2.dx(p1)
-        return dy * (p.get_x() - p1.get_x()) - dx * (p.get_y() - p1.get_y())
+        p1, p2 = self.get_ps()
+        dp0 = p2 - p1
+        dp1 = p - p1
+        return dp0.get_y() * dp1.get_x() - dp0.get_x() * dp0.get_y()
 
     def intersection(self, l):
         p = self.__inter__(l)
-        if p is not None and self.__check_p__(p) and l.__check_p__(p):
+        if self.__check__(p) and l.__check__(p):
             return p
         else:
             return None
 
-    def __check_p__(self, p: Point):
-        return True
-
-    def get_ac(self, arg: int):
-        p1, p2 = self.get_points()
-        if arg == 0:
-            a = p2.dx(p1) / p2.dy(p1)
-            c = -a * p1.get_y() + p1.get_x()
-        else:
-            a = p2.dy(p1) / p2.dx(p1)
-            c = -a * p1.get_x() + p1.get_y()
-        return a, c
-
-    def main_arg(self) -> int:
-        i = 0
-        while i < self.v.size():
-            if self.v.at(i):
-                return i
-            i += 1
-        return -1
-
 
 class RayLine(Line):
 
-    def on_line(self, p: Point) -> bool:
-        return self.distance(p) == 0 & self.__check_p__(p)
+    def __check__(self, p):
+        v = self.get_v()
+        p1 = self.get_p1()
+        if v.get_x() > 0:
+            return p.get_x() >= p1.get_x()
+        elif v.get_x() < 0:
+            return p.get_x() <= p1.get_x()
 
-    def __check_p__(self, p: Point) -> bool:
-        v = Vector2(self.p1, p)
-        n = self.v
-        return v.get_x() * n.get_x() >= 0 and v.get_y() * n.get_y() >= 0
+        if v.get_y() > 0:
+            return p.get_y() >= p1.get_y()
+        elif v.get_y() < 0:
+            return p.get_y() <= p1.get_y()
 
 
-class SectionLine(RayLine):
+class SectionLine(Line):
 
-    def __len__(self):
-        return self.v.__len__()
-
-    def __check_p__(self, p: Point) -> bool:
-        p1, p2 = self.get_points()
-
-        if p1.get_x() != p2.get_x():
-            a, c = p1.get_x(), p2.get_x()
-            b = p.get_x()
+    def __check__(self, p):
+        v = self.get_v()
+        p1, p2 = self.get_ps()
+        if v.get_y() == 0:
+            if v.get_x() > 0:
+                return p1.get_x() <= p.get_x() <= p2.get_x()
+            else:
+                return p1.get_x() >= p.get_x() >= p2.get_x()
         else:
-            a, c = p1.get_y(), p2.get_y()
-            b = p.get_y()
-        if a > c:
-            a, c = c, a
-        return a <= b <= c
+            if v.get_y() > 0:
+                return p1.get_y() <= p.get_y() <= p2.get_y()
+            else:
+                return p1.get_y() >= p.get_y() >= p2.get_y()
