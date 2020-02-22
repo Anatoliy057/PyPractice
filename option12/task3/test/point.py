@@ -1,5 +1,5 @@
 import unittest
-from task3.geometry.point import Point
+from option12.task3.geometry.point import Point
 
 
 class MyTestCase(unittest.TestCase):

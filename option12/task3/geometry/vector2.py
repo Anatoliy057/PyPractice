@@ -1,5 +1,5 @@
 from math import hypot
-from task3.geometry.point import Point
+from option12.task3.geometry.point import Point
 
 
 class Vector2(object):

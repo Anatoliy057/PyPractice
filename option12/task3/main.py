@@ -1,6 +1,6 @@
-from task3.geometry.line import RayLine
-from task3.geometry.point import Point
-from task3.geometry.triangle import Triangle
+from option12.task3.geometry.line import RayLine
+from option12.task3.geometry.point import Point
+from option12.task3.geometry.triangle import Triangle
 
 
 p = Point(0, 0)

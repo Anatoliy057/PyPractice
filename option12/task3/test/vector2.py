@@ -1,5 +1,5 @@
 import unittest
-from task3.geometry.vector2 import Vector2
+from option12.task3.geometry.vector2 import Vector2
 
 
 class MyTestCase(unittest.TestCase):

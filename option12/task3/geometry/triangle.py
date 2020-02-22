@@ -1,6 +1,6 @@
-from task3.geometry.point import Point
-from task3.geometry.vector2 import Vector2
-from task3.geometry.line import SectionLine
+from option12.task3.geometry.point import Point
+from option12.task3.geometry.vector2 import Vector2
+from option12.task3.geometry.line import SectionLine
 
 
 class Triangle(object):

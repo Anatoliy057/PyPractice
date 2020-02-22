@@ -1,5 +1,5 @@
-from task3.geometry.point import Point
-from task3.geometry.vector2 import Vector2
+from option12.task3.geometry.point import Point
+from option12.task3.geometry.vector2 import Vector2
 
 
 class Line(object):
@@ -20,10 +20,10 @@ class Line(object):
             self.__fx = lambda x: dp.get_y() / dp.get_x() * (x - p1.get_x()) + p1.get_y()
             self.__fy = lambda y: dp.get_x() / dp.get_y() * (y - p1.get_y()) + p1.get_x()
 
-    def __repr__(self):
+    def __str__(self):
         return '{0} : {1}, v = {2}'.format(self.__p1, self.__p2, self.__v)
 
-    def __str__(self):
+    def __repr__(self):
         return 'Line: [{0}, {1}], v = {2}'.format(self.__p1, self.__p2, self.__v)
 
     def __check__(self, p):
