@@ -11,8 +11,10 @@ class Line(object):
 
         dp = p2 - p1
         if not dp.get_x():
+            self.__fx = None
             self.__fy = lambda y: dp.get_x() / dp.get_y() * (y - p1.get_y()) + p1.get_x()
         elif not dp.get_y():
+            self.__fy = None
             self.__fx = lambda x: dp.get_y() / dp.get_x() * (x - p1.get_x()) + p1.get_y()
         else:
             self.__fx = lambda x: dp.get_y() / dp.get_x() * (x - p1.get_x()) + p1.get_y()
@@ -34,10 +36,10 @@ class Line(object):
         if self.is_axis():
             if self.is_defined_x():
                 y = self.__fx(0)
-                return Point(l.get_fy(y), y)
+                return Point(l.get_fy()(y), y)
             else:
                 x = self.__fy(0)
-                return Point(x, l.get_fx(x))
+                return Point(x, l.get_fx()(x))
         else:
             p1 = self.get_p1()
             p2 = l.get_p1()
@@ -98,14 +100,14 @@ class RayLine(Line):
         v = self.get_v()
         p1 = self.get_p1()
         if v.get_x() > 0:
-            return p.get_x() >= p1.get_x()
+            return p.get_x() > p1.get_x()
         elif v.get_x() < 0:
-            return p.get_x() <= p1.get_x()
+            return p.get_x() < p1.get_x()
 
         if v.get_y() > 0:
-            return p.get_y() >= p1.get_y()
+            return p.get_y() > p1.get_y()
         elif v.get_y() < 0:
-            return p.get_y() <= p1.get_y()
+            return p.get_y() < p1.get_y()
 
 
 class SectionLine(Line):
