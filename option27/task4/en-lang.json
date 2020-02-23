@@ -1,0 +1,57 @@
+{
+    "month": {
+        "long": [
+            "january",
+            "februaly",
+            "march",
+            "april",
+            "may",
+            "june",
+            "july",
+            "august",
+            "september",
+            "octomber",
+            "november",
+            "december"
+        ],
+        "short": [
+            "jan",
+            "feb",
+            "mar",
+            "apr",
+            "may",
+            "jun",
+            "jul",
+            "aug",
+            "sep",
+            "oct",
+            "nov",
+            "dec"
+        ]
+    },
+    "day": {
+        "long": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+        ],
+        "short": [
+            "mo",
+            "tu",
+            "we",
+            "th",
+            "fr",
+            "sa",
+            "su"
+        ]
+    },
+
+    "12h" : {
+        "am" : "am",
+        "pm" : "pm"
+    }
+}
