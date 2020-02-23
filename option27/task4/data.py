@@ -88,19 +88,15 @@ def _ddd(**kwargs):
     return d.zfill(3)
 
 
-def _hour(**kwargs):
-    h = str(kwargs['t'].hour % 12)
-    return h.zfill(2)
-
-
 def _hour12(**kwargs):
     h = kwargs['t'].hour
     if h <= 12:
-        suffix = kwargs['h12']['am']
+        suffix = kwargs['la']['12h']['am']
     else:
-        suffix = kwargs['h12']['pm']
+        suffix = kwargs['la']['12h']['pm']
     h = str(h % 12)
-    return h.zfill(2) + suffix
+    h = h.zfill(2) + suffix
+    return h
 
 
 def _hour24(**kwargs):
@@ -118,7 +114,6 @@ _functions = {
     'MM': _mm,
     'Month|MONTH|month': _mon,
     'Mon|MON|mon': _month,
-    'HH': _hour,
     'HH12': _hour12,
     'HH24': _hour24
 }
