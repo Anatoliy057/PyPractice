@@ -56,13 +56,13 @@ def _mm(**kwargs):
 
 def _mon(**kwargs):
     i = kwargs['t'].month
-    m = kwargs['la']['month']['short'][i]
+    m = kwargs['la']['month']['short'][i-1]
     return same_low_up_case(kwargs['g'], m)
 
 
 def _month(**kwargs):
     i = kwargs['t'].month
-    m = kwargs['la']['month']['long'][i]
+    m = kwargs['la']['month']['long'][i-1]
     return same_low_up_case(kwargs['g'], m)
 
 
@@ -90,7 +90,7 @@ def _ddd(**kwargs):
 
 def _hour12(**kwargs):
     h = kwargs['t'].hour
-    if h <= 12:
+    if h < 12:
         suffix = kwargs['la']['12h']['am']
     else:
         suffix = kwargs['la']['12h']['pm']
@@ -112,8 +112,8 @@ _functions = {
     '[Dd][Yy]': _dy,
     'Day|DAY|day': _day,
     'MM': _mm,
-    'Month|MONTH|month': _mon,
-    'Mon|MON|mon': _month,
+    'Month|MONTH|month': _month,
+    'Mon|MON|mon': _mon,
     'HH12': _hour12,
     'HH24': _hour24
 }
