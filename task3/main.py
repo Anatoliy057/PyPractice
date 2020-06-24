@@ -1,4 +1,4 @@
-from option27.task3.student import Student
+from task3.student import Student
 from operator import methodcaller
 import json
 import requests
