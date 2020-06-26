@@ -19,7 +19,10 @@ def search():
 
 @app.route('/scanner', methods=['GET'])
 def scan():
-    response = urllib.request.urlopen(request.args['args'])
+    try:
+        response = urllib.request.urlopen(request.args['args'])
+    except ValueError:
+        return redirect('index')
     html = response.read().decode('utf-8')
     result = {}
     splited = re.split(r'<[^>]*>', html)
