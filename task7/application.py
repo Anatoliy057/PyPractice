@@ -11,6 +11,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/')
+def main():
+    return redirect('/index')
+
+
 @app.route('/index', methods=['POST'])
 def search():
     url = request.form['url']
@@ -25,10 +30,10 @@ def scan():
         return redirect('index')
     html = response.read().decode('utf-8')
     result = {}
-    splited = re.split(r'<[^>]*>', html)
-    for part in splited:
-        part = re.split(r'[\->@%_\r\t\n,!?.:; (){}\\|/=\[\]\"\'#&0-9]', part)
-        for s in part:
+    parts = re.split(r'<[^>]*>', html)
+    for part in parts:
+        group = re.split(r'[\->@%_\r\t\n,!?.:; (){}\\|/=\[\]\"\'#&0-9]', part)
+        for s in group:
             if s == '':
                 continue
             if s not in result:
